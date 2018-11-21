@@ -1,0 +1,28 @@
+# For blender 2.78c
+
+import bpy
+
+for obj in bpy.data.objects:
+	if obj.type == 'MESH':
+		obj.select = True
+		bpy.context.scene.objects.active = obj
+	else:
+		obj.select = False
+
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.mesh.select_all(action='SELECT')
+
+bpy.ops.mesh.uv_texture_add()
+bpy.ops.image.new(name="BakedMap", width=2048, height=2048)
+image = bpy.data.images['BakedMap']
+
+bpy.data.screens['UV Editing'].areas[1].spaces[0].image = image
+
+bpy.ops.uv.lightmap_pack()
+bpy.ops.object.bake_image()
+
+image.filepath_raw = "export.jpg"
+image.file_format = 'JPEG'
+image.save()
+
+bpy.ops.export_scene.obj(filepath="export.obj")

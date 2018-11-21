@@ -1,0 +1,30 @@
+map models/entrance_hall/export
+
+environment_sound sounds/rain.ogg
+step_sound sounds/step_hard.ogg
+
+camera forward 10 0 0 -15 7.5 0 -30 -90 0
+camera left 10 0 -15 -5 7 10 -20 -15 0
+camera right 10 0 15 -5 7 -10 -20 195 0
+camera back -25 0 0 7 12 0 -35 90 0
+
+door dining_room 11 0 -21 0 0 0 5 2 1 rooms/dining_room_1 entrance_hall
+door exhibition_room 2 0 17 0 0 0 5 2 1 rooms/exhibition_room entrance_hall
+
+if intro
+  remove intro
+  actor jill models/captain -5 0 -5 0 0 0
+  actor wesker models/darth -5 0 2 0 180 0
+  actor chris models/harry 0 0 0 0 90 0
+  animation jill models/captain/aim once
+  wait 2
+  animation jill models/captain/talk loop
+  sound sounds/jill_1
+  wait 3
+  animation chris models/harry/run 1
+  rotate chris 0 -90 0 1
+  wait 1
+  translate chris 0 0 2 3
+  wait 3
+  usedoor dining_room
+end

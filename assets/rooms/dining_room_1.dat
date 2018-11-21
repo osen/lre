@@ -1,0 +1,12 @@
+map models/dining_room/export
+
+environment_sound sounds/rain.ogg
+step_sound sounds/step_hard.ogg
+
+camera forward 10 0 0 -15 15 0 -30 -90 0
+camera left 10 0 -15 -5 15 10 -20 -15 0
+camera right 10 0 15 -5 15 -10 -20 195 0
+camera back -25 0 0 7 12 0 -35 90 0
+
+door entrance_hall 11 0 -21 0 0 0 5 2 1 rooms/entrance_hall_1 dining_room
+
